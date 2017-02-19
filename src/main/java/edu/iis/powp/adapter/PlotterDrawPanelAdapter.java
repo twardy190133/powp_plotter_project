@@ -32,9 +32,18 @@ public class PlotterDrawPanelAdapter implements IPlotter {
 		drawController.drawLine(line);
 	}
 
+	public void drawToDotted(int x, int y) {
+		ILine line = LineFactory.getDottedLine();
+		line.setStartCoordinates(this.startX, this.startY);
+		line.setEndCoordinates(x, y);
+
+		drawController.drawLine(line);
+	}
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Standard line plotter";
 	}
+	
+	
 	
 }

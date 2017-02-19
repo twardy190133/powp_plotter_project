@@ -31,6 +31,6 @@ public class LinePlotterAdapter implements IPlotter {
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Special line plotter";
 	}
 }

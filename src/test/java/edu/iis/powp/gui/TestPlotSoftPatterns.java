@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.LinePlotterAdapter;
@@ -13,6 +15,8 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.decorator.DriverAdapter;
+import edu.iis.powp.decorator.Manager;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 
 
@@ -30,6 +34,8 @@ public class TestPlotSoftPatterns {
 
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener);
+
+
 	}
 
 	/**
@@ -48,7 +54,12 @@ public class TestPlotSoftPatterns {
 		
 		IPlotter specialPlotter = new LinePlotterAdapter();
 		context.addDriver("Special Plotter", specialPlotter);
-
+		Manager m = new Manager();
+		PlotterDrawPanelAdapter inkPlotter = new PlotterDrawPanelAdapter();
+		DriverAdapter dA = new DriverAdapter(inkPlotter, m);
+		dA.loadInk(Integer.parseInt(JOptionPane.showInputDialog("Give quantity of the ink ")));
+		
+		context.addDriver("Ink Plotter", dA);
 		context.updateDriverInfo();
 	}
 
@@ -91,10 +102,10 @@ public class TestPlotSoftPatterns {
 				Context context = Application.getComponent(Context.class);
 
 				setupDefaultDrawerVisibilityManagement(context);
-
+				setupLogger(context);
 				setupDrivers(context);
 				setupPresetTests(context);
-				setupLogger(context);
+				
 			}
 
 		});

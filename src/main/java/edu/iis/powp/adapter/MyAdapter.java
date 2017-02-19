@@ -37,6 +37,6 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "standard";
     }
 }
