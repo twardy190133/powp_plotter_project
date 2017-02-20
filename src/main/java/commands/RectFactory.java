@@ -7,8 +7,11 @@ public class RectFactory {
 		
 		cc.add(new SetPosition(x,y));
 		cc.add(new DrawLineToPosition(x+w,y));
+		cc.add(new SetPosition(x+w,y));
 		cc.add(new DrawLineToPosition(x+w,y+h));
+		cc.add(new SetPosition(x+w,y+h));
 		cc.add(new DrawLineToPosition(x,y+h));
+		cc.add(new SetPosition(x,y+h));
 		cc.add(new DrawLineToPosition(x,y));
 		return cc;
 	}

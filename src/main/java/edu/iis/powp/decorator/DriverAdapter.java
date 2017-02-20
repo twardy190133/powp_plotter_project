@@ -28,6 +28,8 @@ public class DriverAdapter implements IPlotter{
 	
 	@Override
 	public void setPosition(int x, int y) {
+		this.startX = x;
+		this.startY = y;
 		plotter.setPosition(x, y);
 	
 	
@@ -39,6 +41,7 @@ public class DriverAdapter implements IPlotter{
 
 	
 		Double length =  Math.sqrt(Math.pow(x - this.startX, 2) + Math.pow(y - this.startY, 2));
+
 		if(length>m.checkInk()) {
 	plotter.drawToDotted(x, y);
 	
